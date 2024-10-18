@@ -1,0 +1,81 @@
+trigger:
+- none # Disable ci triggers.
+
+pr: 
+- none # Disable pull request triggers.
+
+schedules:
+- cron: "0 0 * * 0"
+  displayName: Cron job every week
+  branches:
+    include:
+    - main
+  always: true
+
+parameters:
+- name: DAYS_UNTIL_EXPIRATION
+  displayName: Indicate the number of days remaining after the App Registration secrets and certificates expires.
+  type: string
+  default: '30'
+
+- name: INCLUDE_ALREADY_EXPIRED
+  displayName: You also want to list secrets and certificates that have already expired. ?
+  type: string
+  default: 'No'
+
+- name: TENANT_ID
+  displayName: Your Tenant ID ?
+  type: string
+  default: '55a93bee-93f5-4d87-9991-6e63f9a9fa7c'
+
+- name: INCOMING_WEBHOOK
+  displayName: Your Incoming Webhook connector ?
+  type: string
+  default: 'https://r2ds.webhook.office.com/webhookb2/7bh21774-9e51-4b62-8fcc-d1898720c442@13902649-55f0-4568-89f3-8ad9553f6837/IncomingWebhook/f3f639cc50683562821564a28fb37937/7f907294-5ccf-44d6-96e5-c714706bb72c'
+
+variables:
+  INFRA_SERVICE_CONNECTION: 'Azure subscription 1 (0a12401e-dad1-42a9-88f2-d8edd74a1696)-Infrastructure'
+  DAYS_UNTIL_EXPIRATION: '${{ parameters.DAYS_UNTIL_EXPIRATION }}'
+  INCLUDE_ALREADY_EXPIRED: '${{ parameters.INCLUDE_ALREADY_EXPIRED }}'
+  TENANT_ID :  '${{ parameters.TENANT_ID }}'
+  KeyVaultName: 'r2dinfrawe1kv'
+  INCOMING_WEBHOOK : '${{ parameters.INCOMING_WEBHOOK }}'
+
+jobs:
+  - job:
+    displayName: Reporting Identity - App registrations
+    pool:
+      name: Default
+      demands: Agent.Name -equals azuredevopsagent1
+    steps:
+    - checkout: self
+
+    - task: AzureKeyVault@2
+      displayName: 'Azure Key Vault Infra'
+      inputs:
+        azureSubscription: $(INFRA_SERVICE_CONNECTION)
+        KeyVaultName: $(KeyVaultName)
+
+    - task: PowerShell@2
+      displayName: Install Required Modules
+      inputs:
+        targetType: 'inline'
+        script: |
+          Install-Module -Name Az -Scope CurrentUser -Force -AllowClobber
+          Install-Module -Name Microsoft.Graph -Scope CurrentUser -Force -AllowClobber
+        pwsh: true
+
+    - task: PowerShell@2
+      displayName: Secrets and Certificates Reports - App Registrations Expiry
+      inputs:
+        targetType: 'filePath'
+        filePath: 'Get-EntraAppRegistrations.ps1'
+        pwsh: true
+        arguments: '-DaysUntilExpiration $(DAYS_UNTIL_EXPIRATION) `
+                    -IncludeAlreadyExpired $(INCLUDE_ALREADY_EXPIRED) `
+                    -ClientId $(ClientID) `
+                    -ClientSecret $(SecretID) `
+                    -TenantId $(TENANT_ID) `
+                    -hookUrl $(INCOMING_WEBHOOK) '
+
+        errorActionPreference: 'stop'
