@@ -34,11 +34,11 @@ parameters:
   default: 'https://r2ds.webhook.office.com/webhookb2/7bh21774-9e51-4b62-8fcc-d1898720c442@13902649-55f0-4568-89f3-8ad9553f6837/IncomingWebhook/f3f639cc50683562821564a28fb37937/7f907294-5ccf-44d6-96e5-c714706bb72c'
 
 variables:
-  INFRA_SERVICE_CONNECTION: 'Azure subscription 1 (0a12401e-dad1-42a9-88f2-d8edd74a1696)-Infrastructure'
+  INFRA_SERVICE_CONNECTION: 'srv-cnn-Monitoreo'
   DAYS_UNTIL_EXPIRATION: '${{ parameters.DAYS_UNTIL_EXPIRATION }}'
   INCLUDE_ALREADY_EXPIRED: '${{ parameters.INCLUDE_ALREADY_EXPIRED }}'
   TENANT_ID :  '${{ parameters.TENANT_ID }}'
-  KeyVaultName: 'r2dinfrawe1kv'
+  KeyVaultName: 'uat-msy-kv'
   INCOMING_WEBHOOK : '${{ parameters.INCOMING_WEBHOOK }}'
 
 jobs:
