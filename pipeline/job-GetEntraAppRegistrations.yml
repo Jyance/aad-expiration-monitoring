@@ -46,6 +46,7 @@ jobs:
     displayName: Reporting Identity - App registrations
     pool:
       name: default
+      demands: Agent.Name -equals azuredevopsagent1
     steps:
     - checkout: self
 
