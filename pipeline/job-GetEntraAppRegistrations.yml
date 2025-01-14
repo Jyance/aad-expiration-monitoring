@@ -45,8 +45,7 @@ jobs:
   - job:
     displayName: Reporting Identity - App registrations
     pool:
-      name: Azure Pipelines
-      demands: Agent.Name -equals azuredevopsagent1
+      name: default
     steps:
     - checkout: self
 
