@@ -26,7 +26,7 @@ parameters:
 - name: TENANT_ID
   displayName: Your Tenant ID ?
   type: string
-  default: '55a93bee-93f5-4d87-9991-6e63f9a9fa7c'
+  default: '4389fecf-09b9-4e58-a8a1-60be4e33bcce'
 
 - name: INCOMING_WEBHOOK
   displayName: Your Incoming Webhook connector ?
