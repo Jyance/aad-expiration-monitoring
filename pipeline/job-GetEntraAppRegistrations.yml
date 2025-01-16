@@ -38,7 +38,7 @@ variables:
   DAYS_UNTIL_EXPIRATION: '${{ parameters.DAYS_UNTIL_EXPIRATION }}'
   INCLUDE_ALREADY_EXPIRED: '${{ parameters.INCLUDE_ALREADY_EXPIRED }}'
   TENANT_ID :  '${{ parameters.TENANT_ID }}'
-  KeyVaultName: 'uat-msy-kv'
+  KeyVaultName: 'appsecretos'
   INCOMING_WEBHOOK : '${{ parameters.INCOMING_WEBHOOK }}'
 
 jobs:
