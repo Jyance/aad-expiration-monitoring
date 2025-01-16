@@ -34,7 +34,7 @@ parameters:
   default: 'https://r2ds.webhook.office.com/webhookb2/7bh21774-9e51-4b62-8fcc-d1898720c442@13902649-55f0-4568-89f3-8ad9553f6837/IncomingWebhook/f3f639cc50683562821564a28fb37937/7f907294-5ccf-44d6-96e5-c714706bb72c'
 
 variables:
-  INFRA_SERVICE_CONNECTION: 'srv-cnn-Monitoreo'
+  INFRA_SERVICE_CONNECTION: 'srv-key-monitoreo'
   DAYS_UNTIL_EXPIRATION: '${{ parameters.DAYS_UNTIL_EXPIRATION }}'
   INCLUDE_ALREADY_EXPIRED: '${{ parameters.INCLUDE_ALREADY_EXPIRED }}'
   TENANT_ID :  '${{ parameters.TENANT_ID }}'
