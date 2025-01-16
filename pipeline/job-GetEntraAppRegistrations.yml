@@ -45,7 +45,7 @@ jobs:
   - job:
     displayName: Reporting Identity - App registrations
     pool:
-      name: my_agent_pool
+      name: mon1-prd-corp
     steps:
     - checkout: self
 
