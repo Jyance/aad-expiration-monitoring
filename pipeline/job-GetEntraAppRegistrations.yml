@@ -54,8 +54,6 @@ jobs:
       inputs:
         azureSubscription: $(INFRA_SERVICE_CONNECTION)
         KeyVaultName: $(KeyVaultName)
-        SecretsFilter: '*' # 'SecretID'
-
    
     - task: PowerShell@2
       displayName: Install Required Modules
