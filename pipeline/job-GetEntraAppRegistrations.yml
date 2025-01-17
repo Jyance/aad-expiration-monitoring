@@ -45,7 +45,7 @@ jobs:
   - job:
     displayName: Reporting Identity - App registrations
     pool:
-      name: dec2
+      name: web-mex
     steps:
     - checkout: self
 
