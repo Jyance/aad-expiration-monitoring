@@ -45,7 +45,7 @@ jobs:
   - job:
     displayName: Reporting Identity - App registrations
     pool:
-      name: mon1-prd-corp
+      name: web-mex
     steps:
     - checkout: self
 
