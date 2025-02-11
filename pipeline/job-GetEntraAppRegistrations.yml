@@ -31,7 +31,7 @@ parameters:
 - name: INCOMING_WEBHOOK
   displayName: Your Incoming Webhook connector ?
   type: string
-  default: 'https://prod-65.westus.logic.azure.com:443/workflows/6d7da04f5c0540fdbab0a04d5926e733/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5AYYJmnFrnsUHrCC1LrS7NeTgcvbGvrDoTJawzeploI'
+  default: 'https://uniqueyanbal.webhook.office.com/webhookb2/4f546a25-a22c-4b3b-b456-82d16213775a@8cc9b063-d75c-433d-80d0-912c7c002e0b/IncomingWebhook/a43ce016b2564ff293770e9e92ad7e22/90dea4f4-2345-46b3-a66f-9fcd4e86bf9e/V2k7K_DreTcfdJXJM4ViOf99v7tyAkE81B2puoYkupxsk1'
 
 variables:
   INFRA_SERVICE_CONNECTION: 'srv-cnn-Monitoreo'
